@@ -1,27 +1,37 @@
-import React, { Component } from "react";
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      count: 0
-    };
-  }
+import React, { useState } from "react";
+import "./App.css";
+import PA from "./components/pa";
+import PB from "./components/pb";
+import PC from "./components/pc";
+import PD from "./components/pd";
+import PE from "./components/pe";
 
-  increment = () => {
-    this.setState({
-      count: this.state.count + 1
-    });
-  };
+function App() {
+  const [program, setProgram] = useState("A");
 
-  render() {
-    return (
-      <div>
-        <h1>Class Counter</h1>
-        <h2>{this.state.count}</h2>
-        <button onClick={this.increment}>Increment</button>
+  return (
+    <div className="container">
+      <h1>React Lab Programs</h1>
+
+      <div className="button-container">
+        <button onClick={() => setProgram("A")}>Program A</button>
+        <button onClick={() => setProgram("B")}>Program B</button>
+        <button onClick={() => setProgram("C")}>Program C</button>
+        <button onClick={() => setProgram("D")}>Program D</button>
+        <button onClick={() => setProgram("E")}>Program E</button>
       </div>
-    );
-  }
+
+      <hr />
+
+      <div className="output">
+        {program === "A" && <PA />}
+        {program === "B" && <PB />}
+        {program === "C" && <PC />}
+        {program === "D" && <PD />}
+        {program === "E" && <PE />}
+      </div>
+    </div>
+  );
 }
 
 export default App;
